@@ -1,11 +1,13 @@
 package com.tianji.api.client.course;
 
 import com.tianji.api.dto.course.*;
+import com.tianji.common.utils.CollUtils;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
 import java.util.List;
 
 @FeignClient(contextId = "course", value = "course-service")
@@ -18,6 +20,7 @@ public interface CourseClient {
      */
     @GetMapping("/course/infoByTeacherIds")
     List<SubNumAndCourseNumDTO> infoByTeacherIds(@RequestParam("teacherIds") Iterable<Long> teacherIds);
+
 
     /**
      * 根据小节id获取小节对应的mediaId和课程id
